@@ -1,8 +1,7 @@
 import twill.commands as twill
+from selenium import webdriver
+import time
 
-twill.go('https://www.strato.de/apps/CustomerService#/skl')
-
-twill.showforms()
 
 #get username 
 with open("creds.txt", "r") as text_file:
@@ -11,9 +10,11 @@ with open("creds.txt", "r") as text_file:
 print("username: ", data[0])
 print("password: ", data[1])
 
-twill.fv("LoginForm", "login", data[0])
-twill.fv("LoginForm", "login", data[1])
-
-twill.submit()
+request = "https://www.strato.de/apps/CustomerService#/skl"
+browser = webdriver.Chrome(executable_path=r"C:\Users\mikel\Downloads\chromedriver_win32 (1)\chromedriver.exe")
+browser.get(request)
+time.sleep(3)
+username = browser.find_element_by_id("loginLP")
+username.send_keys("test")
 
 print("logged in!")
