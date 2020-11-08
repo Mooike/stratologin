@@ -1,4 +1,5 @@
-from twill.commands import *
-go('https://www.strato.de/apps/CustomerService#/skl')
+import twill.commands as twill
+
+twill.go('https://www.strato.de/apps/CustomerService#/skl')
 
 twill.showforms()
